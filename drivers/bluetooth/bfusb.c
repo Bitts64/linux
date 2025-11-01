@@ -36,15 +36,15 @@ static const struct usb_device_id bfusb_table[] = {
 
 MODULE_DEVICE_TABLE(usb, bfusb_table);
 
-#define BFUSB_MAX_BLOCK_SIZE	256
+#define BFUSB_MAX_BLOCK_SIZE 	256
 
-#define BFUSB_BLOCK_TIMEOUT	3000
+#define BFUSB_BLOCK_TIMEOUT 	3000
 
-#define BFUSB_TX_PROCESS	1
-#define BFUSB_TX_WAKEUP		2
+#define BFUSB_TX_PROCESS 		1
+#define BFUSB_TX_WAKEUP 		2
 
-#define BFUSB_MAX_BULK_TX	2
-#define BFUSB_MAX_BULK_RX	2
+#define BFUSB_MAX_BULK_TX 	2
+#define BFUSB_MAX_BULK_RX 	2
 
 struct bfusb_data {
 	struct hci_dev		*hdev;
