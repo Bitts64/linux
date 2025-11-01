@@ -17,22 +17,22 @@
 #define VERSION "1.0"
 #define ATH3K_FIRMWARE	"ath3k-1.fw"
 
-#define ATH3K_DNLOAD				0x01
-#define ATH3K_GETSTATE				0x05
-#define ATH3K_SET_NORMAL_MODE			0x07
-#define ATH3K_GETVERSION			0x09
-#define USB_REG_SWITCH_VID_PID			0x0a
+#define ATH3K_DNLOAD           		0x01
+#define ATH3K_GETSTATE         		0x05
+#define ATH3K_SET_NORMAL_MODE  		0x07
+#define ATH3K_GETVERSION       		0x09
+#define USB_REG_SWITCH_VID_PID 		0x0a
 
-#define ATH3K_MODE_MASK				0x3F
-#define ATH3K_NORMAL_MODE			0x0E
+#define ATH3K_MODE_MASK        		0x3F
+#define ATH3K_NORMAL_MODE      		0x0E
 
-#define ATH3K_PATCH_UPDATE			0x80
-#define ATH3K_SYSCFG_UPDATE			0x40
+#define ATH3K_PATCH_UPDATE     		0x80
+#define ATH3K_SYSCFG_UPDATE    		0x40
 
-#define ATH3K_XTAL_FREQ_26M			0x00
-#define ATH3K_XTAL_FREQ_40M			0x01
-#define ATH3K_XTAL_FREQ_19P2			0x02
-#define ATH3K_NAME_LEN				0xFF
+#define ATH3K_XTAL_FREQ_26M    		0x00
+#define ATH3K_XTAL_FREQ_40M    		0x01
+#define ATH3K_XTAL_FREQ_19P2   		0x02
+#define ATH3K_NAME_LEN         		0xFF
 
 struct ath3k_version {
 	__le32	rom_version;
@@ -193,11 +193,11 @@ static inline void ath3k_log_failed_loading(int err, int len, int size,
 	       err, len, size, count);
 }
 
-#define USB_REQ_DFU_DNLOAD	1
-#define BULK_SIZE		4096
-#define FW_HDR_SIZE		20
-#define TIMEGAP_USEC_MIN	50
-#define TIMEGAP_USEC_MAX	100
+#define USB_REQ_DFU_DNLOAD 	1
+#define BULK_SIZE          	4096
+#define FW_HDR_SIZE        	20
+#define TIMEGAP_USEC_MIN   	50
+#define TIMEGAP_USEC_MAX   	100
 
 static int ath3k_load_firmware(struct usb_device *udev,
 			       const struct firmware *firmware)
@@ -521,11 +521,11 @@ static void ath3k_disconnect(struct usb_interface *intf)
 }
 
 static struct usb_driver ath3k_driver = {
-	.name		= "ath3k",
-	.probe		= ath3k_probe,
-	.disconnect	= ath3k_disconnect,
-	.id_table	= ath3k_table,
-	.disable_hub_initiated_lpm = 1,
+	.name                      		= "ath3k",
+	.probe                     		= ath3k_probe,
+	.disconnect                		= ath3k_disconnect,
+	.id_table                  		= ath3k_table,
+	.disable_hub_initiated_lpm 		= 1,
 };
 
 module_usb_driver(ath3k_driver);
