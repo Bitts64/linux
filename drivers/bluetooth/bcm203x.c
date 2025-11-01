@@ -33,16 +33,16 @@ static const struct usb_device_id bcm203x_table[] = {
 
 MODULE_DEVICE_TABLE(usb, bcm203x_table);
 
-#define BCM203X_ERROR		0
-#define BCM203X_RESET		1
-#define BCM203X_LOAD_MINIDRV	2
-#define BCM203X_SELECT_MEMORY	3
-#define BCM203X_CHECK_MEMORY	4
-#define BCM203X_LOAD_FIRMWARE	5
-#define BCM203X_CHECK_FIRMWARE	6
+#define BCM203X_ERROR          		0
+#define BCM203X_RESET          		1
+#define BCM203X_LOAD_MINIDRV   		2
+#define BCM203X_SELECT_MEMORY  		3
+#define BCM203X_CHECK_MEMORY   		4
+#define BCM203X_LOAD_FIRMWARE  		5
+#define BCM203X_CHECK_FIRMWARE 		6
 
-#define BCM203X_IN_EP		0x81
-#define BCM203X_OUT_EP		0x02
+#define BCM203X_IN_EP  		0x81
+#define BCM203X_OUT_EP 		0x02
 
 struct bcm203x_data {
 	struct usb_device	*udev;
