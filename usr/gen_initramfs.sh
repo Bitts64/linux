@@ -1,8 +1,9 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) Martin Schlemmer <azarah@nosferatu.za.org>
 # Copyright (C) 2006 Sam Ravnborg <sam@ravnborg.org>
-#
-# Released under the terms of the GNU GPL
+
+# Released under the terms of the GNU GPL.
 #
 # Generate a cpio packed initramfs. It uses gen_init_cpio to generate
 # the cpio archive.
@@ -18,15 +19,15 @@ $0 [-o <file>] [-l <dep_list>] [-u <uid>] [-g <gid>] {-d | <cpio_source>} ...
 	-o <file>      Create initramfs file named <file> by using gen_init_cpio
 	-l <dep_list>  Create dependency list named <dep_list>
 	-u <uid>       User ID to map to user ID 0 (root).
-		       <uid> is only meaningful if <cpio_source> is a
-		       directory.  "squash" forces all files to uid 0.
+	               <uid> is only meaningful if <cpio_source> is a
+	               directory.  "squash" forces all files to uid 0.
 	-g <gid>       Group ID to map to group ID 0 (root).
-		       <gid> is only meaningful if <cpio_source> is a
-		       directory.  "squash" forces all files to gid 0.
+	               <gid> is only meaningful if <cpio_source> is a
+	               directory.  "squash" forces all files to gid 0.
 	-d <date>      Use date for all file mtime values
 	<cpio_source>  File list or directory for cpio archive.
-		       If <cpio_source> is a .cpio file it will be used
-		       as direct input to initramfs.
+	               If <cpio_source> is a .cpio file it will be used
+	               as direct input to initramfs.
 
 All options except -o and -l may be repeated and are interpreted
 sequentially and immediately.  -u and -g states are preserved across
@@ -35,8 +36,9 @@ to reset the root/group mapping.
 EOF
 }
 
+
 # awk style field access
-# $1 - field number; rest is argument string
+# $1 -- field number; the rest is the argument string.
 field() {
 	shift $1 ; echo $1
 }
@@ -44,7 +46,7 @@ field() {
 filetype() {
 	local argv1="$1"
 
-	# symlink test must come before file test
+	# The symlink test must come before the file test.
 	if [ -L "${argv1}" ]; then
 		echo "slink"
 	elif [ -f "${argv1}" ]; then
@@ -81,9 +83,9 @@ list_parse() {
 	echo "$1" | sed 's/:/\\:/g; s/$/ \\/' >> $dep_list
 }
 
-# for each file print a line in following format
+# For each file, print a line in following format:
 # <filetype> <name> <path to file> <octal mode> <uid> <gid>
-# for links, devices etc the format differs. See gen_init_cpio for details
+# For links, devices, etc., the format differs. See gen_init_cpio for details.
 parse() {
 	local location="$1"
 	local name="/${location#${srcdir}}"
@@ -143,14 +145,14 @@ header() {
 	printf "\n#####################\n# $1\n" >> $cpio_list
 }
 
-# process one directory (incl sub-directories)
+# Process one directory (including sub-directories).
 dir_filelist() {
 	header "$1"
 
 	srcdir=$(echo "$1" | sed -e 's://*:/:g')
 	dirlist=$(find "${srcdir}" -printf "%p %m %U %G\n" | LC_ALL=C sort)
 
-	# If $dirlist is only one line, then the directory is empty
+	# If $dirlist is only one line, then the directory is empty.
 	if [  "$(echo "${dirlist}" | wc -l)" -gt 1 ]; then
 		print_mtime "$1"
 
@@ -179,7 +181,7 @@ input_file() {
 			done
 		fi
 	elif [ -d "$1" ]; then
-		# If a directory is specified then add all files in it to fs
+		# If a directory is specified, then add all files in it to the file system.
 		dir_filelist "$1"
 	else
 		echo "  ${prog}: Cannot open '$1'" >&2
@@ -202,26 +204,26 @@ while [ $# -gt 0 ]; do
 	arg="$1"
 	shift
 	case "$arg" in
-		"-l")	# files included in initramfs - used by kbuild
+		"-l")	# files included in initramfs--used by kbuild
 			dep_list="$1"
 			echo "deps_initramfs := \\" > $dep_list
 			shift
 			;;
-		"-o")	# generate cpio image named $1
+		"-o")	# Generate a cpio image named $1.
 			output="-o $1"
 			shift
 			;;
-		"-u")	# map $1 to uid=0 (root)
+		"-u")	# Map $1 to uid=0 (root).
 			root_uid="$1"
 			[ "$root_uid" = "-1" ] && root_uid=$(id -u || echo 0)
 			shift
 			;;
-		"-g")	# map $1 to gid=0 (root)
+		"-g")	# Map $1 to gid=0 (root).
 			root_gid="$1"
 			[ "$root_gid" = "-1" ] && root_gid=$(id -g || echo 0)
 			shift
 			;;
-		"-d")	# date for file mtimes
+		"-d")	# Date for file mtimes
 			timestamp="$(date -d"$1" +%s || :)"
 			if test -n "$timestamp"; then
 				timestamp="-t $timestamp"
@@ -237,7 +239,7 @@ while [ $# -gt 0 ]; do
 				"-"*)
 					unknown_option
 					;;
-				*)	# input file/dir - process it
+				*)	# input file/dir -- process it
 					input_file "$arg"
 					;;
 			esac
@@ -245,6 +247,6 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-# If output_file is set we will generate cpio archive
-# we are careful to delete tmp files
+# If the output_file is set, we will generate cpio archive.
+# We are careful to delete tmp files.
 usr/gen_init_cpio $output $timestamp $cpio_list
