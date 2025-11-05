@@ -40,8 +40,8 @@ MODULE_DEVICE_TABLE(usb, bfusb_table);
 
 #define BFUSB_BLOCK_TIMEOUT 	3000
 
-#define BFUSB_TX_PROCESS 		1
-#define BFUSB_TX_WAKEUP 		2
+#define BFUSB_TX_PROCESS 	1
+#define BFUSB_TX_WAKEUP 	2
 
 #define BFUSB_MAX_BULK_TX 	2
 #define BFUSB_MAX_BULK_RX 	2
