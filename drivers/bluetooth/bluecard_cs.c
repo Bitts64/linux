@@ -92,61 +92,61 @@ static void bluecard_detach(struct pcmcia_device *p_dev);
 
 
 /* Hardware states */
-#define CARD_READY             1
-#define CARD_ACTIVITY	       2
-#define CARD_HAS_PCCARD_ID     4
-#define CARD_HAS_POWER_LED     5
-#define CARD_HAS_ACTIVITY_LED  6
+#define CARD_READY           	1
+#define CARD_ACTIVITY        	2
+#define CARD_HAS_PCCARD_ID   	4
+#define CARD_HAS_POWER_LED   	5
+#define CARD_HAS_ACTIVITY_LED 	6
 
 /* Transmit states  */
-#define XMIT_SENDING         1
-#define XMIT_WAKEUP          2
-#define XMIT_BUFFER_NUMBER   5	/* unset = buffer one, set = buffer two */
-#define XMIT_BUF_ONE_READY   6
-#define XMIT_BUF_TWO_READY   7
-#define XMIT_SENDING_READY   8
+#define XMIT_SENDING      	1
+#define XMIT_WAKEUP       	2
+#define XMIT_BUFFER_NUMBER 	5	/* unset = buffer one, set = buffer two */
+#define XMIT_BUF_ONE_READY 	6
+#define XMIT_BUF_TWO_READY 	7
+#define XMIT_SENDING_READY 	8
 
 /* Receiver states */
-#define RECV_WAIT_PACKET_TYPE   0
-#define RECV_WAIT_EVENT_HEADER  1
-#define RECV_WAIT_ACL_HEADER    2
-#define RECV_WAIT_SCO_HEADER    3
-#define RECV_WAIT_DATA          4
+#define RECV_WAIT_PACKET_TYPE  	0
+#define RECV_WAIT_EVENT_HEADER 	1
+#define RECV_WAIT_ACL_HEADER  	2
+#define RECV_WAIT_SCO_HEADER  	3
+#define RECV_WAIT_DATA        	4
 
 /* Special packet types */
-#define PKT_BAUD_RATE_57600   0x80
-#define PKT_BAUD_RATE_115200  0x81
-#define PKT_BAUD_RATE_230400  0x82
-#define PKT_BAUD_RATE_460800  0x83
+#define PKT_BAUD_RATE_57600  	0x80
+#define PKT_BAUD_RATE_115200 	0x81
+#define PKT_BAUD_RATE_230400 	0x82
+#define PKT_BAUD_RATE_460800 	0x83
 
 
 /* These are the register offsets */
-#define REG_COMMAND     0x20
-#define REG_INTERRUPT   0x21
-#define REG_CONTROL     0x22
-#define REG_RX_CONTROL  0x24
-#define REG_CARD_RESET  0x30
-#define REG_LED_CTRL    0x30
+#define REG_COMMAND   		0x20
+#define REG_INTERRUPT 		0x21
+#define REG_CONTROL   		0x22
+#define REG_RX_CONTROL 		0x24
+#define REG_CARD_RESET 		0x30
+#define REG_LED_CTRL  		0x30
 
 /* REG_COMMAND */
-#define REG_COMMAND_TX_BUF_ONE  0x01
-#define REG_COMMAND_TX_BUF_TWO  0x02
-#define REG_COMMAND_RX_BUF_ONE  0x04
-#define REG_COMMAND_RX_BUF_TWO  0x08
-#define REG_COMMAND_RX_WIN_ONE  0x00
-#define REG_COMMAND_RX_WIN_TWO  0x10
+#define REG_COMMAND_TX_BUF_ONE 	0x01
+#define REG_COMMAND_TX_BUF_TWO 	0x02
+#define REG_COMMAND_RX_BUF_ONE 	0x04
+#define REG_COMMAND_RX_BUF_TWO 	0x08
+#define REG_COMMAND_RX_WIN_ONE 	0x00
+#define REG_COMMAND_RX_WIN_TWO 	0x10
 
 /* REG_CONTROL */
-#define REG_CONTROL_BAUD_RATE_57600   0x00
-#define REG_CONTROL_BAUD_RATE_115200  0x01
-#define REG_CONTROL_BAUD_RATE_230400  0x02
-#define REG_CONTROL_BAUD_RATE_460800  0x03
-#define REG_CONTROL_RTS               0x04
-#define REG_CONTROL_BT_ON             0x08
-#define REG_CONTROL_BT_RESET          0x10
-#define REG_CONTROL_BT_RES_PU         0x20
-#define REG_CONTROL_INTERRUPT         0x40
-#define REG_CONTROL_CARD_RESET        0x80
+#define REG_CONTROL_BAUD_RATE_57600  	0x00
+#define REG_CONTROL_BAUD_RATE_115200 	0x01
+#define REG_CONTROL_BAUD_RATE_230400 	0x02
+#define REG_CONTROL_BAUD_RATE_460800 	0x03
+#define REG_CONTROL_RTS              	0x04
+#define REG_CONTROL_BT_ON            	0x08
+#define REG_CONTROL_BT_RESET         	0x10
+#define REG_CONTROL_BT_RES_PU        	0x20
+#define REG_CONTROL_INTERRUPT        	0x40
+#define REG_CONTROL_CARD_RESET       	0x80
 
 /* REG_RX_CONTROL */
 #define RTS_LEVEL_SHIFT_BITS  0x02
